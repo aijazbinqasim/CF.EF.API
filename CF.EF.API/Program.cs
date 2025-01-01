@@ -1,5 +1,7 @@
 using CF.EF.API.AppContext;
 using Microsoft.EntityFrameworkCore;
+using CF.EF.API.Services;
+using CF.EF.API.Endpoints;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +22,8 @@ builder.Services.AddCors(options =>
     });
 });
 
+builder.Services.AddScoped<IAuthorService, AuthorService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -30,5 +34,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseCors();
 app.UseHttpsRedirection();
+
+app.MapGroup("/api/v1/")
+    .WithTags("Authors")
+    .MapAuthorEndpoint();
 
 app.Run();

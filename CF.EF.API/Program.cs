@@ -2,6 +2,8 @@ using CF.EF.API.AppContext;
 using Microsoft.EntityFrameworkCore;
 using CF.EF.API.Services;
 using CF.EF.API.Endpoints;
+using CF.EF.API.Configs;
+using FluentValidation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +25,8 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddScoped<IAuthorService, AuthorService>();
+builder.Services.AddAutoMapper(typeof(MappingConfig));
+builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 
 var app = builder.Build();
 

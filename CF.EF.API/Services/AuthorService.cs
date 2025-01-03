@@ -1,36 +1,25 @@
-﻿using CF.EF.API.AppContext;
+﻿using AutoMapper;
+using CF.EF.API.AppContext;
 using CF.EF.API.Contracts;
 using CF.EF.API.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace CF.EF.API.Services
 {
-    public class AuthorService(AppDbContext context) : IAuthorService
+    public class AuthorService(AppDbContext context, IMapper mapper) : IAuthorService
     {
-
         private readonly AppDbContext _context = context;
+        private readonly IMapper _mapper = mapper;
 
         public async Task<GetAuthorDto> CreateAuthorAsync(PostAuthorDto author)
         {
             try
             {
-                var authorModel = new AuthorModel
-                {
-                    AuthorName = author.AuthorName,
-                    AuthorEmail = author.AuthorEmail,
-                    Remarks = author.Remarks
-                };
-
+                var authorModel = _mapper.Map<AuthorModel>(author);
                 _context.Authors.Add(authorModel);
                 await _context.SaveChangesAsync();
 
-                return new GetAuthorDto
-                {
-                    AuthorId = authorModel.AuthorId,
-                    AuthorName = authorModel.AuthorName,
-                    AuthorEmail = authorModel.AuthorEmail,
-                    Remarks = authorModel.Remarks
-                };
+                return _mapper.Map<GetAuthorDto>(authorModel);
             }
             catch (Exception ex)
             {
@@ -68,14 +57,7 @@ namespace CF.EF.API.Services
                 {
                     return null!;
                 }
-
-                return new GetAuthorDto
-                {
-                    AuthorId = authorModel.AuthorId,
-                    AuthorName = authorModel.AuthorName,
-                    AuthorEmail = authorModel.AuthorEmail,
-                    Remarks = authorModel.Remarks
-                };
+                return _mapper.Map<GetAuthorDto>(authorModel);  
             }
             catch (Exception ex)
             {
@@ -88,13 +70,8 @@ namespace CF.EF.API.Services
             try
             {
                 var authors = await _context.Authors.ToListAsync();
-                return authors.Select(author => new GetAuthorDto
-                {
-                    AuthorId = author.AuthorId,
-                    AuthorName = author.AuthorName,
-                    AuthorEmail = author.AuthorEmail,
-                    Remarks = author.Remarks
-                });
+                return authors.Select(_mapper.Map<GetAuthorDto>);
+
             }
             catch (Exception ex)
             {
@@ -112,18 +89,10 @@ namespace CF.EF.API.Services
                     return null!;
                 }
 
-                existingAuthor.AuthorName = author.AuthorName;
-                existingAuthor.AuthorEmail = author.AuthorEmail;
-                existingAuthor.Remarks = author.Remarks;
-
+                _mapper.Map(author, existingAuthor);
                 await _context.SaveChangesAsync();
-                return new GetAuthorDto
-                {
-                    AuthorId = existingAuthor.AuthorId,
-                    AuthorName = existingAuthor.AuthorName,
-                    AuthorEmail = existingAuthor.AuthorEmail,
-                    Remarks = existingAuthor.Remarks
-                };
+                return _mapper.Map<GetAuthorDto>(existingAuthor);
+
             }
             catch (Exception ex)
             {

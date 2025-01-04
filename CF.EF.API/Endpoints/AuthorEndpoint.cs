@@ -1,5 +1,6 @@
 ﻿using CF.EF.API.Contracts;
 using CF.EF.API.Services;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CF.EF.API.Endpoints
@@ -8,8 +9,14 @@ namespace CF.EF.API.Endpoints
     {
         public static IEndpointRouteBuilder MapAuthorEndpoint(this IEndpointRouteBuilder app)
         {
-            app.MapPost("/authors", async ([FromBody] PostAuthorDto author, IAuthorService authorService) =>
+            app.MapPost("/authors", async ([FromBody] PostAuthorDto author, IAuthorService authorService,
+                IValidator<PostAuthorDto> validator) =>
             {
+                var vResult = await validator.ValidateAsync(author);
+
+                if (!vResult.IsValid)
+                    return Results.BadRequest(vResult.Errors.Select(e => e.ErrorMessage).ToList());
+                
                 var getCreatedAuthor = await authorService.CreateAuthorAsync(author);
                 return Results.Created($"/authors/{getCreatedAuthor.AuthorId}", getCreatedAuthor);
 
@@ -29,8 +36,14 @@ namespace CF.EF.API.Endpoints
 
             });
 
-            app.MapPut("/authors/{authorId:long}", async ([FromBody] PutAuthorDto author, [FromRoute] long authorId, IAuthorService authorService) =>
+            app.MapPut("/authors/{authorId:long}", async ([FromBody] PutAuthorDto author, [FromRoute] long authorId,
+                IAuthorService authorService, IValidator<PutAuthorDto> validator) =>
             {
+                var vResult = await validator.ValidateAsync(author);
+
+                if (!vResult.IsValid)
+                    return Results.BadRequest(vResult.Errors.Select(e => e.ErrorMessage).ToList());
+
                 var updatedAuthor = await authorService.UpdateAuthorAsync(authorId, author);
                 return updatedAuthor is not null ? Results.Ok(updatedAuthor) : Results.NotFound();
 

@@ -21,7 +21,7 @@ namespace CF.EF.API.Services
 
                 return _mapper.Map<GetAuthorDto>(authorModel);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -42,7 +42,7 @@ namespace CF.EF.API.Services
                 await _context.SaveChangesAsync();
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -59,7 +59,7 @@ namespace CF.EF.API.Services
                 }
                 return _mapper.Map<GetAuthorDto>(authorModel);  
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -73,7 +73,7 @@ namespace CF.EF.API.Services
                 return authors.Select(_mapper.Map<GetAuthorDto>);
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -94,7 +94,7 @@ namespace CF.EF.API.Services
                 return _mapper.Map<GetAuthorDto>(existingAuthor);
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }

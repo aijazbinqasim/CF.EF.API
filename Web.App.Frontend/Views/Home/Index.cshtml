@@ -1,11 +1,82 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.Extensions.Configuration;
+@inject IConfiguration _configuration;
+
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Index Page</title>
+    <title>Home Page</title>
 </head>
-<body>
 
+<body>
     <h1>This is a Heading inside INDEX page</h1>
 
+
+    @{
+        var name = "Aijaz";
+        var age = 30;
+        var isMarried = false;
+
+        var username = "aijaz";
+        var pass = 123;
+
+        var weather = "may";
+    }
+
+    <p>
+        My name is: @name <br/>
+        My age is: @age <br/>
+        I am @(isMarried? "Married" : "not Married")
+        <hr/>
+        @(_configuration.GetValue<string>("MyValue"))
+    </p>
+
+
+    @if (username == "aijaz" && pass == 123)
+    {
+        <h2>
+            Wellcome! @username
+        </h2>
+    } 
+    else {
+        <h2>
+            Invalid username: @username or Password!
+        </h2>
+    }
+
+
+    @if(true){
+
+    }
+
+    @for (var i = 1; i <= 20; i++) {
+        <p>Line: @(i) </p>
+    }
+
+    @{
+    switch (weather)
+    {
+        case "january":
+            <h4>It is: @weather</h4>
+            break;
+
+        case "feb":
+            <h4>It is: @weather</h4>
+            break;
+
+        case "mar":
+            <h4>It is: @weather</h4>
+            break;
+
+        case "apr":
+            <h4>It is: @weather</h4>
+            break;
+
+        default:
+            <h4 style="color: red;">No any weather was matched</h4>
+            break;
+    }
+    }
+
 </body>
+
 </html>

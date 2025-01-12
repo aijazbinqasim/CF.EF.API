@@ -11,6 +11,10 @@
     <h1>This is a Heading inside INDEX page</h1>
 
 
+    <p style="color:green; font-weight: bold;">
+        @ViewBag.ComplexData.Name
+    </p>
+
     @{
         var name = "Aijaz";
         var age = 30;
@@ -27,7 +31,7 @@
         My age is: @age <br/>
         I am @(isMarried? "Married" : "not Married")
         <hr/>
-        @(_configuration.GetValue<string>("MyValue"))
+        @( _configuration.GetValue<string>("MyValue") )
     </p>
 
 
@@ -76,6 +80,15 @@
             break;
     }
     }
+
+    <h3>Person info</h3>
+
+    <p>
+        User: @ViewBag.Username
+        Age: @ViewBag.Age
+        Has job?: @(ViewBag.HasJob == true? "YES" : "NO")
+
+    </p>
 
 </body>
 

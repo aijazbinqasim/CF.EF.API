@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using System.Text.Json;
+
+<!DOCTYPE html>
 <html>
 <head>
     <title>About Page</title>
@@ -6,6 +8,24 @@
 <body>
 
     <h1>This is a Heading inside ABOUT page</h1>
+
+    <h3>Person info</h3>
+
+    <p style="font-weight:bold;color:cornflowerblue;">
+        User: @TempData["Username"]<br />
+        Age: @TempData["Age"]<br />
+        Has job?: @((bool)TempData["HasJob"]! ? "YES" : "NO")<br />
+
+        Complex anonymous type: @{
+            var complexDataJson = TempData["ComplexData"]?.ToString();
+            if (!string.IsNullOrEmpty(complexDataJson))
+            {
+                var complexData = JsonSerializer.Deserialize<dynamic>(complexDataJson);
+                <text>@complexData</text>
+            }
+        }
+    </p>
+
 
 </body>
 </html>

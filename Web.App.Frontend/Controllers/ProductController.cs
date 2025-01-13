@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-namespace Web.App.Frontend.Controllers
+﻿namespace Web.App.Frontend.Controllers
 {
 
     // Attribute routing

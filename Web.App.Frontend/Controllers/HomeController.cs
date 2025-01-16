@@ -88,5 +88,21 @@
             return View(bookList);
         }
 
+        public ViewResult SaveBook()
+        {
+            @ViewBag.Title = "Save Book";
+
+            return View();
+        }
+
+
+        [HttpPost]
+        public ViewResult SaveBook(BookModel book)
+        {
+            @ViewBag.Title = "Book Saved!";
+            return View(book);
+        }
+
+
     }
 }

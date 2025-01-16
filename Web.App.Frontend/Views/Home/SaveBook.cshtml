@@ -1,0 +1,45 @@
+﻿@model BookModel
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+</head>
+
+<body>
+    <h1>Save Book</h1>
+
+    <form asp-controller="Home" asp-action="SaveBook" method="post">
+        <pre>
+        <label asp-for="Id"></label>
+        <input type="number" min="1" asp-for="Id" />
+
+        <label asp-for="Title"></label>
+        <input asp-for="Title" />
+
+        <label asp-for="Price"></label>
+        <input type="number" min="1" max="100" asp-for="Price" />
+
+        <label asp-for="ISBN"></label>
+        <input asp-for="ISBN" />
+
+        <label asp-for="Remarks"></label>
+        <textarea cols="20" rows="3" asp-for="Remarks"></textarea>
+
+        <button type="submit">Save</button>
+        </pre>
+    </form>
+
+
+    @if (Model != null)
+    {
+        <h2>@ViewBag.Title</h2>
+
+        <p>Id: @Model.Id</p>
+        <p>Title: @Model.Title</p>
+        <p>Price: @Model.Price</p>
+        <p>ISBN: @Model.ISBN</p>
+        <p>Remarks: @Model.Remarks</p>
+    }
+
+</body>
+</html>

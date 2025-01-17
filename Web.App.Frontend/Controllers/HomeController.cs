@@ -6,24 +6,24 @@
         {
             // passing data from controller to view.
 
-          
-            //ViewBag.Username = "Walidad";
-            //ViewBag.Age = 22;
-            //ViewBag.HasJob = true;
 
-            //ViewBag.ComplexData = new { Id = 1, Name = "Aijaz" };
+            ViewBag.Username = "Walidad";
+            ViewBag.Age = 22;
+            ViewBag.HasJob = true;
+
+            ViewBag.ComplexData = new { Id = 1, Name = "Aijaz" };
 
 
-            TempData["Username"] = "Walidad";
-            TempData["Age"] = 22;
-            TempData["HasJob"] = true;
+            //TempData["Username"] = "Walidad";
+            //TempData["Age"] = 22;
+            //TempData["HasJob"] = true;
 
-            TempData["ComplexData"] =
-                JsonSerializer.Serialize<dynamic>(new { Id = 1, Name = "Aijaz" });
+            //TempData["ComplexData"] =
+            //    JsonSerializer.Serialize<dynamic>(new { Id = 1, Name = "Aijaz" });
 
-            // return View();
+             return View();
 
-            return RedirectToAction("About");
+            //return RedirectToAction("About");
         }
 
         public ViewResult About()
@@ -90,7 +90,7 @@
 
         public ViewResult SaveBook()
         {
-            @ViewBag.Title = "Save Book";
+            ViewBag.Title = "Save Book";
 
             return View();
         }
@@ -99,10 +99,22 @@
         [HttpPost]
         public ViewResult SaveBook(BookModel book)
         {
-            @ViewBag.Title = "Book Saved!";
+            ViewBag.Title = "Book Saved!";
             return View(book);
         }
 
+
+        public ViewResult PersonDetails(int id, string name, int age)
+        {
+            var person = new Person
+            {
+                Id = id,
+                Name = name,
+                Age = age
+            };
+
+            return View(person);
+        }
 
     }
 }

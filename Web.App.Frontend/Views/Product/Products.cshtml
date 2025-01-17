@@ -1,11 +1,70 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>Product Page</title>
+    <title>Products List</title>
+
+    <style>
+        ul li{
+            padding: 5px;
+        }
+    </style>
+
+
 </head>
 <body>
+    <h1>Products List</h1>
 
-    <h1>This is a Heading inside PRODUCT page</h1>
+
+    <ul>
+        <li>
+            <a asp-controller="Home" asp-action="Index">
+                HOME
+            </a>
+        </li>
+
+        <li>
+            <a asp-controller="Home" asp-action="About">
+                ABOUT
+            </a>
+        </li>
+
+        <li>
+            <a asp-controller="Home" asp-action="Contact">
+                CONTACT
+            </a>
+        </li>
+
+        <li>
+            <a asp-controller="Home" asp-action="Book">
+                BOOK
+            </a>
+        </li>
+
+        <li>
+            <a asp-controller="Home" asp-action="BookList">
+                BOOK LIST
+            </a>
+        </li>
+
+        <li>
+            <a asp-controller="Home" asp-action="SaveBook">
+                SAVE BOOK
+            </a>
+        </li>
+
+
+        <li>
+            <a asp-controller="Home" 
+               asp-action="PersonDetails" 
+               asp-route-id="1" 
+               asp-route-name="Walidad Brohi"
+               asp-route-age="30">
+                View Person Details
+            </a>
+        </li>
+
+    </ul>
+
 
 </body>
 </html>

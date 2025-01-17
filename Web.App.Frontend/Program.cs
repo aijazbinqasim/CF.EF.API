@@ -22,16 +22,21 @@ app.UseRouting();
 
 
 // convensional based routing
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-//.WithStaticAssets();
+//app.MapControllerRoute(
+//    name: "default",
+//    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.MapControllerRoute(
-    name: "contact",
-    pattern: "home/contact-us",
-    defaults: new { controller = "Home", action = "Contact" }
-);
+    name: "default",
+    pattern: "{controller=Product}/{action=Products}/{id?}");
+
+//.WithStaticAssets();
+
+//app.MapControllerRoute(
+//    name: "contact",
+//    pattern: "home/contact-us",
+//    defaults: new { controller = "Home", action = "Contact" }
+//);
 
 //.WithStaticAssets();
 

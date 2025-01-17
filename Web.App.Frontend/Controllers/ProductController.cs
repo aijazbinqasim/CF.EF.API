@@ -2,11 +2,16 @@
 {
 
     // Attribute routing
-    [Route("shop")]
+    //[Route("shop")]
     public class ProductController : Controller
     {
 
-        [Route("plist")]
+        //[Route("plist")]
+        //public ViewResult Products()
+        //{
+        //    return View();
+        //}
+
         public ViewResult Products()
         {
             return View();

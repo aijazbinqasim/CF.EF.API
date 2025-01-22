@@ -7,7 +7,13 @@
 
     <h1>This is a Heading inside ABOUT page</h1>
 
-    <h3>Person info</h3>
+    <h4>
+        NAME: @HttpContextAccessor.HttpContext!.Session.GetString("Name") <br />
+        AGE:  @HttpContextAccessor.HttpContext.Session.GetInt32("Age")
+    </h4>
+
+
+   @*  <h3>Person info</h3>
 
     <p style="font-weight:bold;color:cornflowerblue;">
         User: @TempData["Username"]<br />
@@ -22,7 +28,7 @@
                 <text>@complexData</text>
             }
         }
-    </p>
+    </p> *@
 
 
 </body>

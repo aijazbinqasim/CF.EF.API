@@ -14,7 +14,12 @@
 
         public ViewResult Products()
         {
+            HttpContext.Session.SetString("Name", "Walidad Brohi");
+            HttpContext.Session.SetInt32("Age", 22);
+
             return View();
         }
+
+
     }
 }

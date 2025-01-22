@@ -7,12 +7,16 @@
 <body>
     <h1>This is a Heading inside INDEX page</h1>
 
+    <h4>
+        NAME: @HttpContextAccessor.HttpContext!.Session.GetString("Name") <br />
+        AGE:  @HttpContextAccessor.HttpContext.Session.GetInt32("Age")
+    </h4>
 
    @*  <p style="color:green; font-weight: bold;">
         @ViewBag.ComplexData.Name
     </p> *@
 
-    @{
+   @*  @{
         var name = "Aijaz";
         var age = 30;
         var isMarried = false;
@@ -21,18 +25,18 @@
         var pass = 123;
 
         var weather = "may";
-    }
+    } *@
 
-    <p>
+    @* <p>
         My name is: @name <br/>
         My age is: @age <br/>
         I am @(isMarried? "Married" : "not Married")
         <hr/>
         @( _configuration.GetValue<string>("MyValue") )
-    </p>
+    </p> *@
 
 
-    @if (username == "aijaz" && pass == 123)
+    @* @if (username == "aijaz" && pass == 123)
     {
         <h2>
             Wellcome! @username
@@ -76,16 +80,16 @@
             <h4 style="color: red;">No any weather was matched</h4>
             break;
     }
-    }
+    } *@
 
-    <h3>Person info</h3>
+   @*  <h3>Person info</h3>
 
     <p>
         User: @ViewBag.Username
         Age: @ViewBag.Age
         Has job?: @(ViewBag.HasJob == true? "YES" : "NO")
 
-    </p>
+    </p> *@
 
 </body>
 

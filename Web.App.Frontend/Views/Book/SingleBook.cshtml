@@ -1,0 +1,15 @@
+﻿@{
+    var book = HttpContextAccessor.HttpContext!.Session.Get<BookModel>("book");
+}
+
+<pre>
+    ID: @book!.Id
+    Title: @book.Title
+    Price: @book.Price
+    ISBN: @book.ISBN
+    Remarks: @book.Remarks
+</pre>
+
+<pre>
+    @(HttpContextAccessor.HttpContext!.Session.Get<bool>("isvalid"))
+</pre>

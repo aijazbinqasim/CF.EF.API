@@ -1,0 +1,16 @@
+﻿@model BookModel
+
+
+@if (Model == null)
+{
+    <p>Book not found</p>
+    return;
+}
+
+<pre>
+    ID: @Model!.Id
+    Title: @Model.Title
+    Price: @Model.Price
+    ISBN: @Model.ISBN
+    Remarks: @Model.Remarks
+</pre>

@@ -2,8 +2,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddSession();
+//builder.Services.AddSession();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+builder.Services.AddSession(options =>
+{
+    options.Cookie.Name = ".myapp";
+    options.IdleTimeout = TimeSpan.FromSeconds(10);
+});
+
 
 var app = builder.Build();
 
@@ -32,7 +39,7 @@ app.UseSession();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Product}/{action=Products}/{id?}");
+    pattern: "{controller=Book}/{action=SingleBook}/{id?}");
 
 //.WithStaticAssets();
 

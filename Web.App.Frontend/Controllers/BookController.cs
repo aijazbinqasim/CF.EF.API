@@ -24,5 +24,21 @@
             var book = HttpContext.Session.Get<BookModel>("book");
             return View(book);
         }
+
+        public ViewResult Detail(int? id,  string title)
+        {
+            var book = new BookModel
+            {
+                Id = id ?? 0,
+                Title = title
+            };
+
+            return View(book);
+        }
+
+        public ActionResult Go()
+        {
+            return RedirectToAction("Detail", new { id = 100, title = "PHP" });
+        }
     }
 }

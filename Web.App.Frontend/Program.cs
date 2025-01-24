@@ -27,7 +27,7 @@ app.UseHttpsRedirection();
 app.UseRouting();
 //app.UseAuthorization();
 
-//app.MapStaticAssets();
+app.MapStaticAssets();
 
 
 // convensional based routing
@@ -39,9 +39,8 @@ app.UseSession();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Book}/{action=SingleBook}/{id?}");
-
-//.WithStaticAssets();
+    pattern: "{controller=Gallery}/{action=Index}/{id?}")
+   .WithStaticAssets();
 
 //app.MapControllerRoute(
 //    name: "contact",

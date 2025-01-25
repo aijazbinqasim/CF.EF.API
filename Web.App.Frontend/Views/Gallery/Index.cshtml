@@ -2,23 +2,71 @@
 <html>
 <head>
     <title>Picture Gallery</title>
+
+    <style>
+        p {
+            color: #0066ff;
+            font-weight: bold;
+            text-decoration: overline;
+            background-color: #d2e0e0;
+        }
+
+        h1, h3, h5, small {
+            text-decoration: underline;
+            color: #993366;
+        }
+
+        span {
+            font-size: 20px;
+            color:darksalmon;
+        }
+
+        img {
+            border: solid;
+            border-width: 3px;
+            border-color:indigo;
+        }
+
+        a img {
+            border:dashed;
+            border-width: 3px;
+            border-color: darkred;
+        }
+
+    </style>
 </head>
 
 <body>
 
-    <h1>Picture Gallery</h1>
+    <h1>Heading 1</h1>
+    <h2>Heading 2</h2>
+    <h3>Heading 3</h3>
 
-    <pre>
+    <h5>Heading 5</h5>
+
+    <p>This is a para 1</p>
+
+    <p>This is a para 2</p>
+
+    <p>This is a para 3</p>
+
+
 
     <a href="~/images/admin-aijaz.png" target="_blank">
-        <img loading="lazy" src="~/images/admin-aijaz.png" width="200" height="200" alt="Aijaz" asp-append-version="true" />
-    </a>
-   
-    <a href="~/images/flower.jpg">
-       <img loading="lazy" src="~/images/flower.jpg" alt="Flower" asp-append-version="true" width="200" height="200" />
-    </a>
+       <img loading="lazy" src="~/images/admin-aijaz.png" width="200" height="200" alt="Aijaz" asp-append-version="true" />
+    </a> <br/>
 
-     </pre>
+    <img loading="lazy" src="~/images/flower.jpg" alt="Flower" asp-append-version="true" width="200" height="200" />
+    
+    <br/>
+
+    <span>This is a span 1</span> <br/>
+     
+    <span>This is a span 2</span> <br/>
+
+    <span>This is a span 3</span> <br/>
+
+    <small>This is a small 1</small> 
 
 </body>
 </html>

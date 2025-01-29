@@ -1,0 +1,51 @@
+﻿p {
+    color: #0066ff;
+    font-weight: bold;
+    text-decoration: overline;
+    background-color: #d2e0e0;
+}
+
+h1, h3, h5, small {
+    text-decoration:overline;
+    color: #993366;
+}
+
+span {
+    font-size: 20px;
+    color: darksalmon;
+}
+
+img {
+    border: solid;
+    border-width: 3px;
+    border-color: indigo;
+}
+
+a img {
+    border: double;
+    border-width: 3px;
+    border-color: darkred;
+    border-radius: 20px;
+}
+
+.my-color {
+    color: burlywood
+}
+
+.my-font {
+    font-style: italic;
+}
+
+.my-bgcolor {
+    background-color: black
+}
+
+span#my-color-style {
+    color: #e6e600;
+}
+
+h1, p.my-border {
+    border: solid;
+    border-width: 3px;
+    border-color: #ff6600;
+}

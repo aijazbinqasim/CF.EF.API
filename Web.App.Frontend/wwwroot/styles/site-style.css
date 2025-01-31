@@ -5,6 +5,7 @@
     background-color: #d2e0e0;
 }
 
+/* following are styles for all h1 h2 h5 and small */
 h1, h3, h5, small {
     text-decoration:overline;
     color: #993366;
@@ -15,6 +16,7 @@ span {
     color: darksalmon;
 }
 
+/* following are styles for all img elements */
 img {
     border: solid;
     border-width: 3px;
@@ -28,24 +30,31 @@ a img {
     border-radius: 20px;
 }
 
+/* Following are custom css classes */
 .my-color {
     color: burlywood
 }
 
 .my-font {
-    font-style: italic;
+    font-style:normal;
 }
 
 .my-bgcolor {
     background-color: black
 }
 
+/* Following are custom css ID selector */
 span#my-color-style {
     color: #e6e600;
 }
 
+/* Following is 1 tag group and p tag specific class */
 h1, p.my-border {
     border: solid;
     border-width: 3px;
     border-color: #ff6600;
 }
+
+    h1.new-class {
+        background-color:lightgreen;
+    }

@@ -1,0 +1,10 @@
+﻿a img {
+    border-width: 1px;
+    border-radius: 0;
+}
+
+h1.new-class {
+    background-color: deepskyblue;
+    font-style:italic;
+
+}

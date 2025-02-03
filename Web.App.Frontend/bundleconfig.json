@@ -4,5 +4,11 @@
     "inputFiles": [
       "wwwroot/styles/site-style.css"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/js/myScript.min.js",
+    "inputFiles": [
+      "wwwroot/js/myScript.js"
+    ]
   }
 ]

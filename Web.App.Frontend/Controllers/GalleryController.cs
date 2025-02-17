@@ -16,5 +16,21 @@
         {
             return View();
         }
+
+        public ViewResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ViewResult Create(string name, string email, int age, bool? btn)
+        {
+            ViewBag.Name = name;
+            ViewBag.Email = email;
+            ViewBag.Age = age;
+            ViewBag.isSubmitted = btn;
+
+            return View();
+        }
     }
 }

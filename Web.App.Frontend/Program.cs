@@ -40,7 +40,7 @@ app.UseSession();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Gallery}/{action=Index}/{id?}")
+    pattern: "{controller=Gallery}/{action=Create}/{id?}")
    .WithStaticAssets();
 
 //app.MapControllerRoute(

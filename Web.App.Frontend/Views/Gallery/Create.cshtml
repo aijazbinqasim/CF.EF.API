@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Create</title>
+</head>
+
+<body>
+    <form asp-action="Create" asp-controller="Gallery" method="post">
+        <pre>
+        <input type="text" name="name" id="name" placeholder="Name.." /> <br />
+        <input type="email" name="email" id="email" placeholder="Email.." /> <br />
+        <input type="number" max="50" min="12" name="age" id="age" placeholder="Age" /> <br />
+
+        <button type="submit" id="btn" name="btn" value="true">Submit</button>
+        </pre>
+
+        <div id="print-form"></div>
+    </form>
+
+    <pre>
+        @if (ViewBag.isSubmitted == true)
+        {
+        <span>@ViewBag.Name</span>
+        <span>@ViewBag.Email</span>
+        <span>@ViewBag.Age</span>
+        }
+    </pre>
+
+    <script>
+        document.getElementById('btn').addEventListener('click', function (event) {
+
+            var result = confirm("Are you sure to submit this form?");
+
+            if (!result) event.preventDefault();
+
+
+            // var userName = document.getElementById('name').value;
+            // var email = document.getElementById('email').value;
+            // var age = document.getElementById('age').value;
+            // document.getElementById('print-form').innerText = `${userName} - ${email} - ${age}`;
+
+        });
+    </script>
+</body>
+</html>

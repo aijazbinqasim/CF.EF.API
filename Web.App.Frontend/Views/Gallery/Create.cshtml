@@ -11,35 +11,74 @@
         <input type="email" name="email" id="email" placeholder="Email.." /> <br />
         <input type="number" max="50" min="12" name="age" id="age" placeholder="Age" /> <br />
 
-        <button type="submit" id="btn" name="btn" value="true">Submit</button>
+        <button type="submit" id="btn" name="btn" value="true">Submit</button> <br />
+        <button id="clr" type="button">Clear Result</button>
         </pre>
 
-        <div id="print-form"></div>
+        <pre>
+        <h2>Result:</h2>
+
+        </pre>
     </form>
 
-    <pre>
-        @if (ViewBag.isSubmitted == true)
-        {
-        <span>@ViewBag.Name</span>
-        <span>@ViewBag.Email</span>
-        <span>@ViewBag.Age</span>
-        }
-    </pre>
 
+    @if (ViewBag.isSubmitted == true)
+    {
+        <div id="print-form">
+            <span>@ViewBag.Name</span>
+            <span>@ViewBag.Email</span>
+            <span>@ViewBag.Age</span>
+        </div>
+    }
+
+
+    <script src="~/js/jquery-3.7.1.min.js"></script>
     <script>
-        document.getElementById('btn').addEventListener('click', function (event) {
+        $(document).ready(function(){
 
-            var result = confirm("Are you sure to submit this form?");
+            $('form').on('submit', function(event) {
 
-            if (!result) event.preventDefault();
+                if($('#name').val().trim() != '' &&
+                   $('#email').val().trim() != '' &&
+                   $('#age').val() != '') {
 
+                     var result = confirm("Are you sure to submit this form?");
 
-            // var userName = document.getElementById('name').value;
-            // var email = document.getElementById('email').value;
-            // var age = document.getElementById('age').value;
-            // document.getElementById('print-form').innerText = `${userName} - ${email} - ${age}`;
+                     if (!result) event.preventDefault();
 
+                   }
+
+                   else event.preventDefault();
+            });
+
+            $('#clr').click(function(){
+                 $('#print-form').empty();
+            });
+
+            // $('#btn').click(function(){
+            //    var username = $('#name').val();
+            //    var email = $('#email').val();
+            //    var age = $('#age').val();
+
+            //    $('#print-form').text(`${username} - ${email} - ${age}`);
+
+            // });
         });
+
+
+        // document.getElementById('btn').addEventListener('click', function (event) {
+
+        //     var result = confirm("Are you sure to submit this form?");
+
+        //     if (!result) event.preventDefault();
+
+
+        //     // var userName = document.getElementById('name').value;
+        //     // var email = document.getElementById('email').value;
+        //     // var age = document.getElementById('age').value;
+        //     // document.getElementById('print-form').innerText = `${userName} - ${email} - ${age}`;
+
+        // });
     </script>
 </body>
 </html>
